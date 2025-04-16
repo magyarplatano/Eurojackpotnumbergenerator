@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EuroJackpot Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>EuroJackpot Number Generator</h1>
+    
+    <div class="numbers">
+      <p id="mainNumbers">Main Numbers: -</p>
+      <p id="bonusNumbers">Bonus Numbers: -</p>
+    </div>
+
+    <button onclick="generateNumbers()">Generate Numbers</button>
+
+    <a href="https://www.lottoagent.com/en/eurojackpot" target="_blank" rel="noopener noreferrer"
+       style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; background: #ffcc00; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; color: black;">
+       🎯 Play EuroJackpot Now (Real Tickets)
+    </a>
+
+    <h2>Number History</h2>
+    <div class="history">
+      <div>
+        <h3>Main Numbers</h3>
+        <pre id="mainHistory">None</pre>
+      </div>
+      <div>
+        <h3>Bonus Numbers</h3>
+        <pre id="bonusHistory">None</pre>
+      </div>
+    </div>
+  </div>
+
+  <noscript>
+    <p style="color: red;">⚠️ JavaScript is disabled or not working. The generator won’t function.</p>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>
