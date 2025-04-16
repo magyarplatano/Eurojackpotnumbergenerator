@@ -9,7 +9,7 @@ It generates:
 The app also tracks how often each number has been generated, giving users a basic frequency history.
 
 ## 🔗 Live Demo
-👉 [https://yourusername.github.io/eurojackpot-generator/](https://yourusername.github.io/eurojackpot-generator/) (replace this with your actual link)
+👉 https://github.com/magyarplatano/Eurojackpotnumbergenerator
 
 ## 🚀 Features
 - Clean, mobile-friendly UI
