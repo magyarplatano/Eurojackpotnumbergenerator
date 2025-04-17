@@ -4,33 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EuroJackpot Generator</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" /> <!-- Link to the CSS file -->
   <!-- Google Analytics Placeholder -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-F3H5F42000');
+    gtag('config', 'G-F3H5F42000'); // Make sure this ID is correct
   </script>
 </head>
 <body>
   <div class="container">
     <h1>EuroJackpot Number Generator</h1>
-    
+
+    <!-- Numbers Display Area -->
     <div class="numbers">
       <p id="mainNumbers">Main Numbers: -</p>
       <p id="bonusNumbers">Bonus Numbers: -</p>
     </div>
 
+    <!-- Generate Button -->
     <button onclick="generateNumbers()">Generate Numbers</button>
 
+    <!-- Affiliate Link - NOTE THE CHANGES HERE -->
     <a href="https://lnk.to/TLHP?tl_affid=17717" target="_blank" rel="noopener noreferrer"
-       onclick="gtag('event', 'click', { 'event_category': 'affiliate', 'event_label': 'TheLotter' });"
-       style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; background: #ffcc00; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; color: black;">
+       class="affiliate-link" <!-- Added class -->
+       onclick="gtag('event', 'click', { 'event_category': 'affiliate', 'event_label': 'TheLotter' });">
+       <!-- Removed the inline style attribute -->
        🎯 Play EuroJackpot Now (Real Tickets)
     </a>
 
+    <!-- History Section -->
     <h2>Number History</h2>
     <div class="history">
       <div>
@@ -45,9 +50,10 @@
   </div>
 
   <noscript>
-    <p style="color: red;">⚠️ JavaScript is disabled or not working. The generator won’t function.</p>
+    <p>⚠️ JavaScript is disabled or not working. The generator won’t function.</p>
+    <!-- Note: The CSS now styles the <noscript> paragraph -->
   </noscript>
 
-  <script src="script.js"></script>
+  <script src="script.js"></script> <!-- Your JS file -->
 </body>
 </html>
