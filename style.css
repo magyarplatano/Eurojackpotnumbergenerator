@@ -4,10 +4,11 @@
 :root {
   --primary-neon: #00ffff; /* Cyan */
   --secondary-neon: #ff00ff; /* Magenta/Pink */
+  --accent-neon: #f0ff00; /* Neon Yellow/Green for accents like the affiliate button */
   --background-dark: #1a1a2e; /* Dark Blue/Purple */
   --container-dark: #2a2a4a; /* Slightly Lighter Dark Blue/Purple */
   --text-light: #e0e0e0;
-  --text-dark: #1a1a2e;
+  --text-dark: #1a1a2e; /* Used for text on bright backgrounds */
   --glow-intensity-low: 0.3;
   --glow-intensity-medium: 0.6;
   --glow-intensity-high: 0.9;
@@ -16,8 +17,6 @@
 body {
   font-family: 'Poppins', sans-serif;
   background: var(--background-dark);
-  /* Add a subtle gradient or pattern if desired */
-  /* background: linear-gradient(135deg, #1a1a2e 0%, #1f1f3d 100%); */
   color: var(--text-light);
   margin: 0;
   padding: 20px;
@@ -30,37 +29,24 @@ body {
 
 .container {
   background: var(--container-dark);
-  padding: 40px; /* Increased padding */
-  border-radius: 20px; /* Smoother radius */
-  max-width: 600px; /* Slightly wider */
+  padding: 30px 40px; /* Adjusted padding */
+  border-radius: 20px;
+  max-width: 650px; /* Slightly wider to accommodate content */
   margin: auto;
-  border: 1px solid rgba(var(--primary-neon), 0.3); /* Subtle neon border */
+  border: 1px solid rgba(var(--primary-neon), 0.3);
   box-shadow:
-    0 0 20px rgba(0, 255, 255, var(--glow-intensity-low)), /* Cyan Glow */
+    0 0 20px rgba(0, 255, 255, var(--glow-intensity-low)),
     0 0 40px rgba(0, 255, 255, var(--glow-intensity-low)/2),
-    inset 0 0 15px rgba(0, 0, 0, 0.5); /* Inner shadow for depth */
-  position: relative; /* For potential pseudo-elements later */
-  overflow: hidden; /* Ensure glows don't break layout weirdly */
+    inset 0 0 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Optional: Add subtle circuit/grid lines */
-/* .container::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.5;
-  pointer-events: none;
-} */
-
-
-h1 { /* Add a title if you don't have one */
+h1 {
   color: #ffffff;
-  font-size: 2.8em;
+  font-size: 2.5em; /* Adjusted size */
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   text-shadow:
     0 0 5px #fff,
     0 0 10px var(--primary-neon),
@@ -68,104 +54,143 @@ h1 { /* Add a title if you don't have one */
   letter-spacing: 1px;
 }
 
-/* Style the area where numbers are displayed */
-#generatedNumbers, .number-display { /* Use a class or ID for the number display area */
-  margin: 40px 0;
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens if needed */
-  justify-content: center;
-  gap: 15px; /* Spacing between number circles */
+/* --- Number Display Area --- */
+.numbers {
+  margin: 30px 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2); /* Subtle background for the number area */
+  border-radius: 10px;
+  border: 1px solid rgba(var(--primary-neon), 0.1);
 }
 
-.number-circle, .euro-number-circle {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%; /* Circular shape */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5em;
+.numbers p {
+  margin: 10px 0;
+  font-size: 1.4em; /* Larger font for numbers */
   font-weight: 600;
-  transition: all 0.3s ease; /* Smooth transition */
+  letter-spacing: 1px;
 }
 
-/* Main numbers styling */
-.number-circle {
-  background: rgba(0, 255, 255, 0.1); /* Faint cyan background */
-  border: 2px solid var(--primary-neon);
+#mainNumbers {
   color: var(--primary-neon);
   text-shadow: 0 0 8px var(--primary-neon);
-  box-shadow: 0 0 10px var(--primary-neon),
-              inset 0 0 5px rgba(0, 255, 255, var(--glow-intensity-medium));
 }
 
-/* Euro numbers styling (assuming 2 extra numbers) */
-.euro-number-circle {
-  background: rgba(255, 0, 255, 0.1); /* Faint magenta background */
-  border: 2px solid var(--secondary-neon);
+#bonusNumbers {
   color: var(--secondary-neon);
   text-shadow: 0 0 8px var(--secondary-neon);
-  box-shadow: 0 0 10px var(--secondary-neon),
-              inset 0 0 5px rgba(255, 0, 255, var(--glow-intensity-medium));
 }
 
-/* --- Button Styling --- */
+/* --- Generate Button Styling --- */
 button {
   padding: 15px 35px;
-  font-size: 1.1em; /* Slightly larger text */
-  font-weight: 600; /* Bolder */
+  font-size: 1.1em;
+  font-weight: 600;
   cursor: pointer;
   border: 2px solid var(--primary-neon);
-  background: transparent; /* Start transparent */
+  background: transparent;
   color: var(--primary-neon);
-  border-radius: 10px; /* Match container radius style */
-  text-transform: uppercase; /* More stylized */
+  border-radius: 10px;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  position: relative; /* Needed for potential effects */
+  position: relative;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Smooth, slightly bouncy transition */
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: 0 0 10px rgba(0, 255, 255, var(--glow-intensity-low)),
-              inset 0 0 5px rgba(0, 255, 255, var(--glow-intensity-low)); /* Subtle glow */
+              inset 0 0 5px rgba(0, 255, 255, var(--glow-intensity-low));
   text-shadow: 0 0 5px rgba(0, 255, 255, var(--glow-intensity-medium));
+  margin-top: 10px; /* Add some space above */
 }
 
 button:hover,
 button:focus {
-  background: var(--primary-neon); /* Fill with neon color on hover */
-  color: var(--container-dark); /* Change text color for contrast */
-  box-shadow: 0 0 20px rgba(0, 255, 255, var(--glow-intensity-medium)), /* Brighter glow */
+  background: var(--primary-neon);
+  color: var(--container-dark);
+  box-shadow: 0 0 20px rgba(0, 255, 255, var(--glow-intensity-medium)),
               0 0 35px rgba(0, 255, 255, var(--glow-intensity-medium)),
               inset 0 0 10px rgba(255, 255, 255, 0.5);
-  text-shadow: none; /* Remove text glow when background is bright */
-  outline: none; /* Remove focus outline */
+  text-shadow: none;
+  outline: none;
 }
 
 button:active {
-  transform: scale(0.98); /* Slight press effect */
+  transform: scale(0.98);
   box-shadow: 0 0 10px rgba(0, 255, 255, var(--glow-intensity-low)),
               inset 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
+/* --- Affiliate Link Styling --- */
+.affiliate-link { /* Target the class we added to the link */
+  display: inline-block; /* Keep as block/inline-block */
+  margin-top: 25px; /* Space above */
+  padding: 12px 25px; /* Slightly different padding */
+  font-size: 1em; /* Adjust size */
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--accent-neon); /* Use accent color */
+  background: transparent;
+  color: var(--accent-neon);
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 0 10px rgba(240, 255, 0, var(--glow-intensity-low)), /* Yellow glow */
+              inset 0 0 5px rgba(240, 255, 0, var(--glow-intensity-low));
+  text-shadow: 0 0 5px rgba(240, 255, 0, var(--glow-intensity-medium));
+}
+
+.affiliate-link:hover,
+.affiliate-link:focus {
+  background: var(--accent-neon);
+  color: var(--text-dark); /* Dark text on yellow */
+  box-shadow: 0 0 20px rgba(240, 255, 0, var(--glow-intensity-medium)),
+              0 0 35px rgba(240, 255, 0, var(--glow-intensity-medium)),
+              inset 0 0 10px rgba(255, 255, 255, 0.7);
+  text-shadow: none;
+  outline: none;
+}
+
+.affiliate-link:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 10px rgba(240, 255, 0, var(--glow-intensity-low)),
+              inset 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
 /* --- History Section --- */
+h2 { /* Style for "Number History" */
+  color: #ffffff;
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-top: 40px; /* Space above history */
+  margin-bottom: 15px;
+  text-shadow:
+    0 0 3px #fff,
+    0 0 7px var(--primary-neon),
+    0 0 10px var(--primary-neon);
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(var(--primary-neon), 0.2);
+  padding-bottom: 10px;
+}
+
 .history {
   display: flex;
-  justify-content: space-around; /* Space out columns */
-  margin-top: 40px;
-  padding-top: 30px;
+  justify-content: space-around;
+  margin-top: 20px;
   text-align: left;
-  border-top: 1px dashed rgba(var(--primary-neon), 0.3); /* Dashed separator */
-  gap: 20px; /* Gap between history columns */
+  gap: 20px;
 }
 
 .history div {
-  width: 48%; /* Adjust width as needed */
-  background: rgba(0,0,0, 0.2); /* Slightly darker background for history */
+  width: 48%;
+  background: rgba(0,0,0, 0.2);
   padding: 15px;
   border-radius: 8px;
   border: 1px solid rgba(var(--primary-neon), 0.1);
+  box-shadow: inset 0 0 10px rgba(0,0,0, 0.3); /* Inner shadow for depth */
 }
 
-.history h3 { /* Assuming titles for history sections */
+.history h3 {
   color: var(--primary-neon);
   font-weight: 600;
   margin-top: 0;
@@ -173,23 +198,44 @@ button:active {
   text-shadow: 0 0 5px rgba(var(--primary-neon), 0.5);
   border-bottom: 1px solid rgba(var(--primary-neon), 0.2);
   padding-bottom: 5px;
+  font-size: 1.1em;
 }
 
-.history ul { /* Style the lists if using ul */
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 0.9em;
-  line-height: 1.7;
+/* Style the <pre> tags for history */
+.history pre {
+  font-family: 'Courier New', Courier, monospace; /* Keep monospace for history */
+  font-size: 0.95em;
+  line-height: 1.6;
   color: var(--text-light);
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2); /* Slightly darker background inside pre */
+  border-radius: 5px;
+  max-height: 150px; /* Limit height and allow scrolling */
+  overflow-y: auto; /* Add scrollbar if content exceeds max-height */
+  white-space: pre-wrap; /* Allow wrapping within the pre tag */
+  word-wrap: break-word; /* Break long words if necessary */
+  border: 1px solid rgba(var(--primary-neon), 0.1);
 }
 
-.history ul li {
-  margin-bottom: 8px;
-  opacity: 0.8; /* Slightly fade out list items */
-  transition: opacity 0.3s ease;
+/* Specific colors for history text if desired */
+#mainHistory {
+  color: var(--primary-neon);
+  opacity: 0.9;
 }
 
-.history ul li:hover {
- opacity: 1.0; /* Full opacity on hover */
+#bonusHistory {
+  color: var(--secondary-neon);
+  opacity: 0.9;
+}
+
+/* --- NoScript Styling --- */
+noscript p {
+  background-color: #4d0000; /* Dark red */
+  color: #ffdddd;
+  padding: 15px;
+  border: 1px solid #ff4444;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 600px;
+  font-weight: bold;
 }
